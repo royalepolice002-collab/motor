@@ -69,3 +69,11 @@ Pokok = harga × (1 − DP%). Bunga total = pokok × bunga flat tahunan × tenor
 ## Kontak bisnis aktif
 
 Nomor WhatsApp dari pemilik: **08999329143**, dinormalisasi menjadi **628999329143** untuk tautan `wa.me`. Nomor ini menjadi default publik, sehingga tombol pemesanan langsung aktif tanpa environment variable. `VITE_WHATSAPP_NUMBER` tetap dapat digunakan untuk menggantinya saat build.
+
+## Colorful interface update
+
+- Compact, centered-in-card shortcut popover replaces the downward-expanding detail panel. Three icon actions: WhatsApp, specifications/gallery, and credit simulation. Hover/focus or tap the product photo opens it; × and Escape dismiss it.
+- Header and sidebar link to a social-media page. Only WhatsApp is configured; other social accounts remain explicitly pending.
+- Expanded brand filter directory (not additional inventory). The catalog still contains 12 models from 11 brands; brands with no records show an empty state.
+- Colorful gradients, animated hero accents, entry transitions, and hover motion; reduced-motion preferences are respected.
+- Six locally stored financing logos in the lower section link to the educational simulator. No official support or partnership is claimed. Logo attribution: `public/leasing/SOURCES.md`.
