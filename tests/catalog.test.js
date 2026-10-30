@@ -33,3 +33,13 @@ test('configured WhatsApp encodes selected motorcycle',()=>{
 test('hover popup opens with delay, dismisses and keyboard focus works',async()=>{
  const {w,d}=app();const card=d.querySelector('.bike-card');const enter=new w.Event('pointerenter');Object.defineProperty(enter,'pointerType',{value:'mouse'});card.dispatchEvent(enter);await new Promise(r=>setTimeout(r,360));assert.ok(card.classList.contains('peek'));card.dispatchEvent(new w.Event('pointerleave'));assert.ok(!card.classList.contains('peek'));card.querySelector('.photo-open').focus();assert.ok(card.classList.contains('peek'));card.dispatchEvent(new w.KeyboardEvent('keydown',{key:'Escape'}));assert.ok(!card.classList.contains('peek'));w.close();
 });
+test('compact shortcuts open on tap, expose only three primary actions and select credit',()=>{
+ const {w,d}=app('628999329143');const card=d.querySelector('[data-product="9"]');card.querySelector('.photo-open').click();assert.ok(card.classList.contains('peek'));
+ const panel=card.querySelector('.quick-actions');assert.equal(panel.children.length,3);assert.equal(panel.querySelectorAll('svg').length,3);assert.ok(panel.querySelector('a').href.includes('628999329143'));
+ panel.querySelector('[data-credit]').click();assert.equal(d.querySelector('#bike-select').value,'9');w.close();
+});
+test('social navbar opens page and six financing logo files exist',()=>{
+ const {w,d}=app('628999329143');assert.equal(d.querySelectorAll('.leasing-logo img').length,6);for(const image of d.querySelectorAll('.leasing-logo img'))assert.ok(existsSync('public'+image.getAttribute('src')));
+ d.querySelector('.nav-social').click();assert.equal(d.querySelectorAll('.social-card').length,6);assert.ok(d.querySelector('.social-card a').href.includes('628999329143'));assert.equal(d.querySelectorAll('.social-pending').length,5);
+ d.querySelector('.leasing-logo').click();assert.ok(d.querySelector('#monthly'));w.close();
+});
